@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travellers Login</title>
+  <link rel="stylesheet" href="../CSS/login.css">
+  <style>
+    /* Simple popup style */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 2px solid #222;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      z-index: 9999;
+      text-align: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .popup.show {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -55%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    .popup button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .popup button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="login-box">
+    <h2>Travellers</h2>
+    <p>Login to explore the world with us 🌍✈</p>
+
+    <form id="loginForm" novalidate>
+      <input type="email" id="email" placeholder="Email Address">
+      <input type="password" id="password" placeholder="Password">
+      <button type="submit">Login</button>
+      <a href="#">Forgot Password?</a>
+      <a href="signup.html">Create New Account</a>
+    </form>
+  </div>
+
+  <!-- Login popup -->
+  <div id="loginPopup" class="popup">
+    <h3>🎉 You are logged in!</h3>
+    <p>Welcome back, traveller 🧳</p>
+    <button id="closePopup">Continue</button>
+  </div>
+
+  <script src="../JS/login2.js"></script>
+</body>
+</html>
