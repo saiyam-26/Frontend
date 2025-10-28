@@ -13,5 +13,11 @@
     "id": 2,
     "email": "saiyamv3@gmail.com",
     "Password": "SleepWhileStanding"
+  },
+  {
+    "id": 3,
+    "fullName": "Gupta",
+    "email": "gupta1@gmail.com",
+    "Password": "1234567890"
   }
 ]
