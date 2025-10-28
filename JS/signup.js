@@ -56,7 +56,6 @@
 
 
 
-
 const form = document.getElementById("signupForm");
 
 form.addEventListener("submit", async (e) => {
@@ -78,17 +77,19 @@ form.addEventListener("submit", async (e) => {
       body: JSON.stringify({ fullname, email, password }),
     });
 
-    const data = await response.json(); // 👈 must read JSON here
-
+    const data = await response.json();
+    window.location.href = "../HTML/travel.html";
     if (response.ok) {
       alert(data.message || "User registered successfully!");
-      form.reset(); // clear form
+      window.location.href = "../HTML/travel.html";
+      form.reset();
     } else {
       alert(data.error || "Failed to register user!");
     }
   } catch (error) {
-    console.error("Error:", error);
-    alert("Something went wrong! Please try again.");
+    alert(`Something went wrong! 
+Error type: ${error.name}
+Message: ${error.message}`);
   }
 });
 

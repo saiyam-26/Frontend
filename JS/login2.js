@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const password = document.getElementById("password").value.trim();
 
     // Empty fields check
-    if (email === "" || password === "") {
-      alert("Please fill out both fields before submitting.");
-      return;
-    }
+    // if (email === "" || password === "") {
+    //   alert("Please fill out both fields before submitting.");
+    //   return;
+    // }
 
     // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -33,16 +33,20 @@ document.addEventListener("DOMContentLoaded", function () {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userName: email,  // treating email as username
-          Password: password
+          email: email,
+          password: password, // ✅ lowercase key
         }),
       });
+
       console.log(email, password);
+
       const data = await response.json();
+      console.log(data);
 
       if (data.success) {
         // Show popup
-        popup.classList.add("show");
+        alert("Login Successfull");
+        window.location.href = "../HTML/travel.html";
         form.reset();
       } else {
         alert("❌ " + data.message);
