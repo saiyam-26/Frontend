@@ -145,251 +145,131 @@ body::before {
   text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-/* Services Section */
-.services {
-  padding: 2rem 1rem 4rem;
-}
+/* Rudraksh */
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* --------------------------------------------------- */
+/*                 FLEXBOX BASED SECTIONS               */
+/* --------------------------------------------------- */
+
+.grid,
+.info-grid,
+.offer-grid,
+.testi-grid,
+.destination-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch; /* equal height */
   gap: 1.5rem;
 }
 
-.card {
+/* Generic Card Styling */
+.card,
+.info-card,
+.offer-card,
+.testi-card,
+.dest-card {
+  flex: 1 1 280px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 22px;
-  padding: 1.6rem;
+  border-radius: 16px;
+  padding: 1.5rem;
   box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(34,211,238,.45);
-  box-shadow: 0 12px 35px rgba(2,6,23,.7);
+/* Hover Effects */
+.card:hover,
+.info-card:hover,
+.offer-card:hover,
+.testi-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  border-color: rgba(34,211,238,0.45);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.7);
 }
 
+/* Service Icons */
 .card .icon {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 12px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(135deg, rgba(34,211,238,.3), rgba(167,139,250,.3));
   border: 1px solid rgba(255,255,255,.2);
-  margin-bottom: 1rem;
-  font-weight: 700;
+  margin: 0 auto 1rem;
+  font-size: 1.5rem;
   color: #f0f9ff;
 }
 
-.card h3 {
-  margin: .3rem 0 .6rem;
-  font-size: 1.15rem;
-  color: #ffffff;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1rem;
-  color: #cbd5e1;
-}
-
-.card .badge {
-  display: inline-block;
-  margin-top: 1rem;
-  font-size: .8rem;
-  font-weight: 600;
-  letter-spacing: .3px;
-  padding: .4rem .7rem;
-  border-radius: 999px;
-  background: rgba(34,211,238,.15);
-  border: 1px solid rgba(34,211,238,.35);
-  color: #a5f3fc;
-}
-
-/* CTA Section */
-.cta {
-  text-align: center;
-  padding: 3rem 1rem 4rem;
-}
-
-.cta p {
-  font-size: 1.1rem;
-  color: #e2e8f0;
-}
-.details {
-  margin-top: 3rem;
-  padding: 2rem 1rem;
-  text-align: center;
-}
-
-.details h2 {
+/* Section Headings */
+.details h2,
+.offers h2,
+.testimonials h2,
+.contact h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
+  text-align: center;
   color: #ffffff;
   text-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+/* Info Cards */
+.info-card img,
+.offer-card img,
+.dest-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
 }
 
-.info-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  padding: 1.5rem;
-  color: #cbd5e1;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  backdrop-filter: blur(6px);
-  transition: transform 0.2s ease;
-}
-.info-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(34,211,238,.45);
-}
-.info-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-/* Offers Section */
-.offers {
-  margin-top: 3rem;
-  text-align: center;
-}
-.offer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 1.5rem;
-}
-.offer-card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: transform .3s;
-}
-.offer-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-.offer-card h3, .offer-card p {
-  margin: .8rem 0;
-  color: #fff;
-}
+/* Offer Cards */
 .offer-card .btn {
   display: inline-block;
-  margin: 1rem 0;
-  padding: .6rem 1.2rem;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
   background: #22d3ee;
   color: #0f172a;
   border-radius: 8px;
   text-decoration: none;
+  font-weight: 600;
+  align-self: center;
+  transition: background 0.3s ease;
 }
-.offer-card:hover {
-  transform: translateY(-6px);
+
+.offer-card .btn:hover {
+  background: #0ea5e9;
 }
 
 /* Destinations */
-.destinations {
-  margin-top: 3rem;
-  text-align: center;
-}
-.destination-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 1.5rem;
-}
 .dest-card {
   height: 200px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 600;
+  align-items: center;
   color: #fff;
+  font-weight: 600;
+  font-size: 1.3rem;
   border-radius: 16px;
   background-size: cover;
   background-position: center;
 }
-.dest-card.hill { background-image: url('hill.jpg'); }
-.dest-card.beach { background-image: url('beach.jpg'); }
-.dest-card.city { background-image: url('city.jpg'); }
 
 /* Testimonials */
-.testimonials {
-  margin-top: 3rem;
-  text-align: center;
-}
-.testi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 1.5rem;
-}
 .testi-card {
-  background: rgba(255,255,255,0.05);
-  padding: 1.5rem;
-  border-radius: 12px;
   font-style: italic;
+  justify-content: space-between;
+  padding: 1.5rem;
   color: #cbd5e1;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
-
-/* Contact */
-.contact {
-  margin-top: 3rem;
-  text-align: center;
-}
-.contact form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 500px;
-  margin: auto;
-}
-.contact input, .contact textarea {
-  padding: .8rem;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-}
-.contact button {
-  padding: .8rem;
-  border: none;
-  border-radius: 8px;
-  background: #22d3ee;
-  color: #0f172a;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.contact button:hover {
-  background: #0ea5e9;
-}
-.contact input:invalid,
-.contact textarea:invalid {
-  border: 2px solid #ef4444; /* red border */
-}
-
-/* Highlight valid fields */
-.contact input:valid,
-.contact textarea:valid {
-  border: 2px solid #22c55e; /* green border */
-}
-
-/* Focus effect */
-.contact input:focus,
-.contact textarea:focus {
-  border: 2px solid #0ea5e9;
-  outline: none;
-}
-
 /* Footer */
 footer {
   margin-top: 3rem;
@@ -510,4 +390,100 @@ footer {
     font-size: 0.9rem;
   }
 }
+/* -----------------------------Chat Bot ---------------------- */
+
+/* body {
+  font-family:  sans-serif;
+} */
+
+/* 🌐 Chatbot Styles */
+#chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.chat-header {
+  background: #0091ff;
+  color: white;
+  padding: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.chat-body {
+  height: 250px;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  outline: none;
+  font-size: 14px;
+}
+
+.chat-input button {
+  background: #0073ff;
+  border: none;
+  color: ;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.user-message {
+  background: #d0f5ff;  /* current pale orange */
+  color: #000;          /* change from white to black text */
+  padding: 10px;
+  border-radius: 10px;
+  align-self: flex-end;
+  max-width: 85%;
+}
+
+
+.bot-message {
+  background: #f1f1f1; /* lighter grey background for better contrast */
+  color: #000; /* black text for visibility */
+  padding: 10px;
+  border-radius: 10px;
+  align-self: flex-start;
+  white-space: pre-wrap;
+  max-width: 85%;
+  font-size: 14px;
+}
+button {
+  background-color: #007bff; /* bright blue */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* darker blue on hover */
+}
+
+
+
 /* --------------------------------------------------- */

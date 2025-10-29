@@ -19,5 +19,17 @@
     "fullName": "Gupta",
     "email": "gupta1@gmail.com",
     "Password": "1234567890"
+  },
+  {
+    "id": 4,
+    "fullName": "gupta123",
+    "email": "gupta123@gmail.com",
+    "Password": "qwertyuiop"
+  },
+  {
+    "id": 5,
+    "fullName": "sam",
+    "email": "gupta1234@gmail.com",
+    "Password": "1234567890"
   }
 ]

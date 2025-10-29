@@ -29,7 +29,7 @@
                 <a href="#contact">Contact Us</a>
             </div>
             <div class="register">
-                <a href="signup.html" id = "dynamic-button">Register</a>
+                <a href="signup.html" id="dynamic-button">Register</a>
             </div>
         </nav>
 
@@ -204,25 +204,36 @@
                     </div>
                 </section>
 
-                <!-- Contact -->
-                <section class="contact container" id="contact">
-                    <h2>Contact Us</h2>
-                    <form id="contactForm" novalidate>
-                        <input type="text" id="name" name="name" placeholder="Your Name">
-                        <input type="email" id="email" name="email" placeholder="Your Email">
-                        <textarea id="message" name="message" placeholder="Your Message"></textarea>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </section>
+                <!-- 🧠 Travel Assistant Chatbot -->
+                <div id="chatbot-container">
+                    <div class="chat-header">💬 Travel Assistant</div>
+                    <div class="chat-body" id="chat-body">
+                        <div class="bot-message">Hi 👋 I'm your Travel Assistant! Ask me about flights, hotels, or
+                            offers.</div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="user-input" placeholder="Type your message..." />
+                        <button id="send-btn">Send</button>
+                    </div>
+                </div>
 
+                <!-- 🌍 Google Map Section -->
+                <section id="map-section" style="text-align:center; padding:40px;">
+                    <h2>📍 Our Office Location</h2>
+                    <div id="map" style="width: 90%; height: 400px; margin: 20px auto; border-radius: 10px;"></div>
+                </section>
 
                 <!-- Footer -->
                 <footer>
                     <p>© 2025 Travellers </p>
                 </footer>
             </section>
-            <script src="../JS/contact.js"></script>
+            <!-- <script src="../JS/contact.js"></script> -->
             <script src="../JS/travel.js"></script>
+            <script async
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeR40jlTgApPXE5vAshR7TwBiioo9fHCA&callback=initMap"
+                defer>
+                </script>
 </body>
 
 </html>

@@ -1,0 +1,8 @@
+[
+  { "destination": "Paris", "price": 125000, "nights": 5 },
+  { "destination": "Maldives", "price": 70000, "nights": 4 },
+  { "destination": "Kerala", "price": 49999, "nights": 6 },
+  { "destination": "Goa", "price": 55000, "nights": 5 },
+  { "destination": "Switzerland", "price": 95000, "nights": 6 },
+  { "destination": "Thailand", "price": 65000, "nights": 5 }
+]
