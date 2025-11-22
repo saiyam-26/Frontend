@@ -1,93 +1,83 @@
 
-const fs = require("fs");
-const path = require("path");
-const express = require("express");
-const cors = require("cors");
 
-const app = express();
-app.use(express.json());
-app.use(cors());
 
-// Database file path
-const dbFilePath = path.join(__dirname, "Database", "db.json");
 
-// Read DB
-function readDB() {
-  if (!fs.existsSync(dbFilePath)) return [];
-  return JSON.parse(fs.readFileSync(dbFilePath, "utf8"));
-}
 
-// Write DB
-function writeDB(data) {
-  fs.writeFileSync(dbFilePath, JSON.stringify(data, null, 2));
-}
 
-// Test route
-app.get("/", (req, res) => res.send("✅ Backend is running properly!"));
 
-// SIGNUP ROUTE
-app.post("/signup", (req, res) => {
-  try {
-    const { fullname, email, password } = req.body;
+const API_URL = "http://localhost:3000/users";
 
-    if (!fullname || !email || !password) {
-      return res.status(400).json({ error: "All fields are required!" });
-    }
+// Signup Form 
+document.getElementById("signupForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    const data = readDB();
+  document.querySelectorAll(".error").forEach((el) => (el.textContent = ""));
 
-    // Check if email already exists
-    const existingUser = data.find((u) => u.email === email);
-    if (existingUser) {
-      return res.status(400).json({ error: "Email already exists!" });
-    }
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
-    // Create new user
-    const newUser = {
-      id: data.length ? data[data.length - 1].id + 1 : 0,
-      fullName: fullname,
-      email,
-      Password: password,
-    };
+  let isValid = true;
+  if (!username) {
+    document.getElementById("usernameError").textContent = "Username is required.";
+    isValid = false;
+  }
+  const passPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+  if (!passPattern.test(password)) {
+    document.getElementById("passwordError").textContent =
+      "Password must have 8+ chars, 1 uppercase, 1 lowercase, 1 number & 1 special symbol.";
+    isValid = false;
+  }
+  if (password !== confirmPassword) {
+    document.getElementById("confirmError").textContent = "Passwords do not match.";
+    isValid = false;
+  }
 
-    data.push(newUser);
-    writeDB(data);
+  if (!isValid) return;
+  const response = await fetch(`${API_URL}?username=${username}`);
+  const existingUsers = await response.json();
 
-    res.status(200).json({ message: "User registered successfully!" });
-  } catch (err) {
-    console.error("Signup Error:", err);
-    res.status(500).json({ error: "Internal Server Error" });
+  if (existingUsers.length > 0) {
+    document.getElementById("usernameError").textContent = "Username already exists!";
+    return;
+  }
+  await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+
+  document.getElementById("confirmError").style.color = "green";
+  document.getElementById("confirmError").textContent =
+    "Signup successful! Redirecting to login...";
+
+  setTimeout(() => (window.location.href = "../HTML/travel.html"), 2000);
+});
+//Login Form Handler
+document.querySelector("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if (!username || !password) {
+    alert("Please enter username and password!");
+    return;
+  }
+
+  const response = await fetch(`${API_URL}?username=${username}&password=${password}`);
+  const users = await response.json();
+
+  if (users.length > 0) {
+    alert("Login successful!");
+  
+    window.location.href = "../HTML/travel.html"; // redirect to homepage not working
+  } else {
+    alert("Invalid username or password!");
   }
 });
 
-//  LOGIN ROUTE
-app.post("/login", (req, res) => {
-  try {
-    const { email, password } = req.body;
 
-    const data = readDB();
 
-    const user = data.find((u) => u.email === email);
 
-    if (!user) {
-      return res.status(404).json({ success: false, message: "User not found!" });
-    }
 
-    if (user.Password !== password) {
-      return res.status(401).json({ success: false, message: "Incorrect password!" });
-    }
-
-    res.json({
-      success: true,
-      message: "Login successful!",
-      user: { id: user.id, fullName: user.fullName, email: user.email },
-    });
-  } catch (err) {
-    console.error("Login Error:", err);
-    res.status(500).json({ success: false, message: "Internal Server Error" });
-  }
-});
-
-// Start the server
-const PORT = 3000;
-app.listen(PORT, () => console.log(`✅ Server running at http://localhost:${PORT}`));

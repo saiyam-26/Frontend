@@ -85,3 +85,55 @@
     .signup-box a:hover {
       text-decoration: underline;
     }
+
+    .input-group {
+  text-align: left;
+  width: 100%;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: -5px;
+  display: block;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+}
+
+/* Input box with eye icons */
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+  user-select: none;
+}
+
+.toggle-eye:hover {
+  color: #000;
+}
+

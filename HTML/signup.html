@@ -12,49 +12,35 @@
     <h2>Create Your Account</h2>
     <p>Join Travellers today and start your journey with us 🌍✈</p>
 
-    <form id="signupForm" novalidate>
-      <input type="text" id="fullname" placeholder="Full Name">
-      <input type="email" id="email" placeholder="Email Address">
-      <input type="password" id="password" placeholder="Password">
-      <input type="password" id="confirmPassword" placeholder="Confirm Password">
-      <button type="submit">Register</button>
-      <a href="login2.html">Already have an account? Login</a>
-      <a href="travel.html">← Back to Home</a>
-    </form>
+<form id="signupForm" novalidate>
+
+  <div class="input-group">
+    <input type="text" id="fullname" placeholder="Full Name">
   </div>
+
+  <div class="input-group">
+    <input type="email" id="email" placeholder="Email Address">
+  </div>
+
+  <div class="input-group">
+    <input type="password" id="password" placeholder="Password">
+    <span class="toggle-eye" id="togglePass">&#128065;</span>
+  </div>
+
+  <div class="input-group">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+    <span class="toggle-eye" id="toggleCPass">&#128065;</span>
+  </div>
+
+  <button type="submit">Register</button>
+
+  <a href="login2.html">Already have an account? Login</a>
+  <a href="travel.html">← Back to Home</a>
+</form>
+
+
 
   <script src="../JS/signup.js"></script>
 </body>
 </html>
 
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../CSS/signup.css">
-</head>
-<body>
-  <div class="overlay"></div>
-  <div class="signup-box">
-    <h2>Create Your Account</h2>
-    <p>Join Travellers today and start your journey with us 🌍✈</p>
-    <form>
-      <input type="text" placeholder="Full Name" pattern="[A-Za-z\s]{2,30}" 
-       title="Name should contain only letters and spaces (2–30 characters)" required>
-      <input type="email" placeholder="Email Address" required>
-      <input type="password" placeholder="Password" required minlength="8" 
-       title="Password must be at least 8 characters long">
-      <input type="password" placeholder="Confirm Password" required minlength="8" 
-       title="Password must be same as above.">
-      <button type="submit">Register</button>
-      <a href="login.html">Already have an account? Login</a>
-      <a href="travel.html">← Back to Home</a>
-      
-    </form>
-  </div>
-  <script src="../JS/signup.js"></script>
-</body>
-</html> -->

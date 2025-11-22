@@ -1,66 +1,48 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("loginForm");
-  const popup = document.getElementById("loginPopup");
-  const closePopup = document.getElementById("closePopup");
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+  // Email validation
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
 
-    // Empty fields check
-    // if (email === "" || password === "") {
-    //   alert("Please fill out both fields before submitting.");
-    //   return;
-    // }
+  // Password validation
+  if (password.length < 8) {
+    alert("Password must be at least 8 characters long.");
+    return;
+  }
 
-    // Email validation
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-      alert("Please enter a valid email address.");
+  try {
+    // 👉 Check user in JSON-SERVER database
+    const checkRes = await fetch(`http://localhost:3000/users?email=${encodeURIComponent(email)}`);
+    const users = await checkRes.json();
+
+    if (users.length === 0) {
+      // ❌ No such email
+      alert("User not registered! Please sign up first.");
       return;
     }
 
-    // Password validation
-    if (password.length < 8) {
-      alert("Password must be at least 8 characters long.");
+    const user = users[0];
+
+    // 👉 Match password
+    if (user.Password !== password) {
+      alert("Incorrect password!");
       return;
     }
 
-    try {
-      // Send login data to backend
-      const response = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: email,
-          password: password, // ✅ lowercase key
-        }),
-      });
+    // 👉 Save logged user so travel.html shows user name
+    localStorage.setItem("loggedUser", JSON.stringify(user));
 
-      console.log(email, password);
+    // 👉 Redirect to main page
+    window.location.href = "../HTML/travel.html";
 
-      const data = await response.json();
-      console.log(data);
-
-      if (data.success) {
-        // Show popup
-        alert("Login Successfull");
-        window.location.href = "../HTML/travel.html";
-        form.reset();
-      } else {
-        alert("❌ " + data.message);
-      }
-    } catch (error) {
-      console.error(error);
-      alert("Server not reachable. Please start backend first.");
-    }
-  });
-
-  // Close popup
-  closePopup.addEventListener("click", () => {
-    popup.classList.remove("show");
-    // Redirect to homepage if you want
-    // window.location.href = "index.html";
-  });
+  } catch (error) {
+    console.error(error);
+    alert("Server not reachable. Please start backend first.");
+  }
 });
