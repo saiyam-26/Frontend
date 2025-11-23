@@ -202,7 +202,8 @@ document.querySelectorAll(".offer-btn").forEach(btn => {
         } else {
             // Logged in → go to the correct page
             const pageToOpen = this.getAttribute("data-page");
-            window.location.href = pageToOpen;
+            // window.location.href = pageToOpen;
+            window.location.href = "http://localhost:3001/travel.html";
         }
     });
 

@@ -11,24 +11,6 @@
       "fullName": "gupta123",
       "email": "gupta123@gmail.com",
       "Password": "qwertyuiop"
-    },
-    {
-      "id": "f6db",
-      "fullName": "Rudraksh",
-      "email": "rud@gmail.com",
-      "Password": "Rudraksh@12345"
-    },
-    {
-      "id": "fda8",
-      "fullName": "Rudraksh",
-      "email": "rud1@gmail.com",
-      "Password": "Rudraksh@12345"
-    },
-    {
-      "id": "eab8",
-      "fullName": "Rudraksh",
-      "email": "rud12@gmail.com",
-      "Password": "Rudraksh@12345"
     }
   ]
 }
