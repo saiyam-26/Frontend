@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerala Adventure</title>
+<style>
+/* ---------- General Styles ---------- */
+body{
+    margin:0;
+    font-family:"Poppins",sans-serif;
+    background:#f0f4f8;
+}
+img{width:100%; display:block; border-radius:10px;}
+
+/* ---------- Navbar ---------- */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    background: linear-gradient(90deg,#009688,#26a69a);
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.navbar .logo{
+    font-size:24px;
+    font-weight:bold;
+    text-decoration:none;
+    color:white;
+}
+.navbar .nav-links{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+.navbar .nav-links li a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+}
+.navbar .nav-links li a:hover{
+    color:#ffe082;
+}
+
+/* ---------- Hero Section ---------- */
+.hero-section{
+    position:relative;
+    overflow:hidden;
+    height:70vh;
+}
+.hero-section img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    animation: zoomIn 20s infinite alternate;
+}
+@keyframes zoomIn{
+    0%{transform:scale(1);}
+    100%{transform:scale(1.1);}
+}
+
+/* ---------- About Section ---------- */
+.about-section{
+    padding:60px 20px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:30px;
+}
+.about-section img{
+    flex:1;
+    max-width:500px;
+    animation: fadeIn 2s ease forwards;
+}
+.about-text{
+    flex:1;
+}
+.about-text h2{
+    font-size:2.5rem;
+    color:#00796b;
+}
+.about-text p{
+    font-size:1.1rem;
+    color:#555;
+    line-height:1.6;
+}
+@keyframes fadeIn{
+    0%{opacity:0;transform:translateY(20px);}
+    100%{opacity:1;transform:translateY(0);}
+}
+
+/* ---------- Gallery Section ---------- */
+.gallery-section{
+    padding:50px 20px;
+    background:#e0f2f1;
+}
+.gallery-section h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:#00796b;
+}
+.gallery-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:15px;
+    background:#ccc;
+}
+.gallery-item img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    transition:transform 0.5s ease;
+}
+.gallery-item:hover img{
+    transform:scale(1.1);
+}
+.img-name{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    background:rgba(0,0,0,0.5);
+    color:white;
+    font-weight:600;
+    padding:10px 0;
+    font-size:1.1rem;
+}
+
+/* ---------- Food Section ---------- */
+.food-section{
+    padding:60px 20px;
+}
+.food-section h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:#00796b;
+}
+.food-row{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:30px;
+    margin-bottom:40px;
+}
+.food-image-box{
+    flex:1;
+    max-width:400px;
+}
+.food-image-box img{
+    height:250px;
+    object-fit:cover;
+}
+.food-text{
+    flex:2;
+    font-size:1.1rem;
+    color:#555;
+}
+.food-name{
+    font-weight:700;
+    color:#004d40;
+    text-align:center;
+    margin-top:8px;
+}
+
+/* ---------- Testimonials ---------- */
+.testimonial-section{
+    padding:60px 20px;
+    background:#e0f7fa;
+}
+.testimonial-section h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:#00796b;
+}
+.testimonial-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+.testimonial-card{
+    background:#ffffff;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.1);
+    transition:transform 0.3s;
+}
+.testimonial-card:hover{
+    transform:translateY(-5px);
+}
+.t-name{
+    font-weight:700;
+    color:#004d40;
+}
+.t-role{
+    font-size:0.9rem;
+    color:#555;
+}
+.t-text{
+    margin-top:10px;
+    font-size:1rem;
+    color:#555;
+}
+
+/* ---------- Footer ---------- */
+footer{
+    background:#004d40;
+    color:white;
+    padding:50px 20px;
+}
+.footer-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:20px;
+}
+.footer-box{
+    flex:1;
+    min-width:220px;
+}
+.footer-box h3{
+    font-size:20px;
+    margin-bottom:10px;
+}
+.footer-box p,a{
+    color:#ddd;
+    text-decoration:none;
+    margin-bottom:6px;
+    display:block;
+}
+.footer-box a:hover{
+    color:#ffe082;
+}
+.footer-icons span{
+    font-size:28px;
+    margin-right:12px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+.footer-icons span:hover{
+    transform:scale(1.2);
+}
+.footer-bottom{
+    text-align:center;
+    margin-top:20px;
+    font-size:15px;
+    color:#ccc;
+    border-top:1px solid #333;
+    padding-top:10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="travel.html" class="logo">Travellers</a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#food">Food</a></li>
+        <li><a href="#review">Reviews</a></li>
+    </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero-section">
+    <img src="https://lp-cms-production.imgix.net/2025-04/shutterstock2454866115.jpg?auto=format,compress&q=72&w=1440&h=810&fit=crop" alt="Kerala Backwaters">
+</section>
+
+<!-- About Kerala -->
+<section id="about" class="about-section">
+    <img src="https://s3.india.com/wp-content/uploads/2024/12/Eco-friendly-Travel-In-Kerala.jpg" alt="Kerala">
+    <div class="about-text">
+        <h2>About Kerala</h2>
+        <p>
+            Kerala, known as "God’s Own Country," offers a perfect blend of adventure and relaxation. From serene backwaters to lush tea plantations, thrilling wildlife safaris, and golden beaches, Kerala provides experiences for every traveler. Explore houseboats, vibrant culture, traditional cuisine, and picturesque landscapes that make every journey memorable.
+        </p>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="gallery-section">
+    <h2>Gallery</h2>
+    <div class="gallery-container">
+        <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwI-aYibpepFEdihBTTB8uM25cArlYonjOQQ&s" alt=""><p class="img-name">Backwaters</p></div>
+        <div class="gallery-item"><img src="https://lakequeenhouseboats.com/wp-content/uploads/2024/11/6-Bed-Room-Ultra-Luxury-Houseboat-scaled-1.webp" alt=""><p class="img-name">Houseboats</p></div>
+        <div class="gallery-item"><img src="https://www.viacation.com/_next/image?url=https%3A%2F%2Fwp.viacation.com%2Fwp-content%2Fuploads%2F2024%2F12%2F374387-1.jpg&w=1920&q=75" alt=""><p class="img-name">Munnar Tea Gardens</p></div>
+        <div class="gallery-item"><img src="https://static.toiimg.com/thumb/msid-110498851,width-748,height-499,resizemode=4,imgsize-106226/A-guide-to-the-worlds-6-best-and-biggest-wildlife-safaris.jpg" alt=""><p class="img-name">Wildlife Safari</p></div>
+        <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6s4MeFmZ0WLK6RBaC3HVAyYNQApD9s4d2Kw&s" alt=""><p class="img-name">Beaches</p></div>
+        <div class="gallery-item"><img src="https://www.hindustantimes.com/ht-img/img/2025/02/11/original/jjj_1739278947753.jpg" alt=""><p class="img-name">Cultural Festivals</p></div>
+    </div>
+</section>
+
+<!-- Food -->
+<section id="food" class="food-section">
+    <h2>Famous Food of Kerala</h2>
+    <div class="food-row">
+        <div class="food-image-box"><img src="https://www.keralatourism.org/_next/image/?url=http%3A%2F%2F127.0.0.1%2Fktadmin%2Fimg%2Fpages%2Fmobile%2FAppam_and_Chicken_Stew20131126121303_88_1.jpg&w=3840&q=75" alt=""><p class="food-name">Appam & Stew</p></div>
+        <div class="food-text">Appam with stew is a traditional breakfast of Kerala with soft rice pancakes served with vegetable or meat stew.</div>
+    </div>
+
+    <div class="food-row">
+        <div class="food-image-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQizmv6q9pIJUuvE1KVNFuD3aFn_vtr_OWpig&s" alt=""><p class="food-name">Kerala Sadya</p></div>
+        <div class="food-text">A traditional feast served on banana leaves with rice, sambar, curries, and desserts. A must-try cultural experience.</div>
+    </div>
+
+    <div class="food-row">
+        <div class="food-image-box"><img src="https://i0.wp.com/www.chitrasfoodbook.com/wp-content/uploads/2016/07/puttu-kadala-curry-recipe.jpg?w=1200&ssl=1" alt=""><p class="food-name">Puttu & Kadala Curry</p></div>
+        <div class="food-text">Puttu is a steamed rice cake served with spicy chickpea curry. A healthy and delicious Kerala specialty.</div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="review" class="testimonial-section">
+    <h2>What Visitors Say</h2>
+    <div class="testimonial-container">
+        <div class="testimonial-card">
+            <h3 class="t-name">Ravi Kumar</h3>
+            <p class="t-role">Traveler from India</p>
+            <p class="t-text">“Kerala’s backwaters and houseboats are magical. A serene and unforgettable adventure!”</p>
+        </div>
+        <div class="testimonial-card">
+            <h3 class="t-name">Emily Clark</h3>
+            <p class="t-role">Traveler from USA</p>
+            <p class="t-text">“From tea plantations to beaches, Kerala is a perfect mix of relaxation and thrill. Highly recommend!”</p>
+        </div>
+        <div class="testimonial-card">
+            <h3 class="t-name">Thomas Müller</h3>
+            <p class="t-role">Traveler from Germany</p>
+            <p class="t-text">“Cultural festivals and local food made my trip to Kerala truly authentic and memorable.”</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-box"><h3>Travellers</h3><p>Your trusted partner for unforgettable journeys worldwide.</p></div>
+        <div class="footer-box"><h3>Quick Links</h3><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#food">Food</a><a href="#review">Reviews</a></div>
+        <div class="footer-box"><h3>Contact Us</h3><p>Email: support@travellers.com</p><p>Phone: +91 98765 43210</p><p>Location: Kerala, India</p></div>
+        <div class="footer-box"><h3>Follow Us</h3><div class="footer-icons"><span>🌐</span><span>📘</span><span>📸</span><span>🐦</span></div></div>
+    </div>
+    <div class="footer-bottom">© 2025 Travellers. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>

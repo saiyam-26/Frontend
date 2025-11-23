@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maldives Adventure</title>
+<style>
+/* ---------- General Styles ---------- */
+body{
+    margin:0;
+    font-family:"Poppins",sans-serif;
+    background:#f0f4f8;
+}
+img{width:100%; display:block; border-radius:10px;}
+
+/* ---------- Navbar ---------- */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    background: linear-gradient(90deg,#00bcd4,#26c6da);
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.navbar .logo{
+    font-size:24px;
+    font-weight:bold;
+    text-decoration:none;
+    color:white;
+}
+.navbar .nav-links{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+.navbar .nav-links li a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+}
+.navbar .nav-links li a:hover{
+    color:#ffe082;
+}
+
+/* ---------- Hero Section ---------- */
+.hero-section{
+    position:relative;
+    overflow:hidden;
+    height:70vh;
+}
+.hero-section img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    animation: zoomIn 20s infinite alternate;
+}
+@keyframes zoomIn{
+    0%{transform:scale(1);}
+    100%{transform:scale(1.1);}
+}
+
+/* ---------- About Section ---------- */
+.about-section{
+    padding:60px 20px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:30px;
+}
+.about-section img{
+    flex:1;
+    max-width:500px;
+    animation: fadeIn 2s ease forwards;
+}
+.about-text{
+    flex:1;
+}
+.about-text h2{
+    font-size:2.5rem;
+    color:#00796b;
+}
+.about-text p{
+    font-size:1.1rem;
+    color:#555;
+    line-height:1.6;
+}
+@keyframes fadeIn{
+    0%{opacity:0;transform:translateY(20px);}
+    100%{opacity:1;transform:translateY(0);}
+}
+
+/* ---------- Gallery Section ---------- */
+.gallery-section{
+    padding:50px 20px;
+    background:#e0f7fa;
+}
+.gallery-section h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:#00796b;
+}
+.gallery-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:15px;
+    background:#ccc;
+}
+.gallery-item img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    transition:transform 0.5s ease;
+}
+.gallery-item:hover img{
+    transform:scale(1.1);
+}
+.img-name{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    background:rgba(0,0,0,0.5);
+    color:white;
+    font-weight:600;
+    padding:10px 0;
+    font-size:1.1rem;
+}
+
+/* ---------- Food Section ---------- */
+.food-section{
+    padding:60px 20px;
+}
+.food-section h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:#00796b;
+}
+.food-row{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:30px;
+    margin-bottom:40px;
+}
+.food-image-box{
+    flex:1;
+    max-width:400px;
+}
+.food-image-box img{
+    height:250px;
+    object-fit:cover;
+}
+.food-text{
+    flex:2;
+    font-size:1.1rem;
+    color:#555;
+}
+.food-name{
+    font-weight:700;
+    color:#004d40;
+    text-align:center;
+    margin-top:8px;
+}
+
+/* ---------- Testimonials ---------- */
+.testimonial-section{
+    padding:60px 20px;
+    background:#b2ebf2;
+}
+.testimonial-section h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:#00796b;
+}
+.testimonial-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+.testimonial-card{
+    background:#ffffff;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.1);
+    transition:transform 0.3s;
+}
+.testimonial-card:hover{
+    transform:translateY(-5px);
+}
+.t-name{
+    font-weight:700;
+    color:#004d40;
+}
+.t-role{
+    font-size:0.9rem;
+    color:#555;
+}
+.t-text{
+    margin-top:10px;
+    font-size:1rem;
+    color:#555;
+}
+
+/* ---------- Footer ---------- */
+footer{
+    background:#004d40;
+    color:white;
+    padding:50px 20px;
+}
+.footer-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:20px;
+}
+.footer-box{
+    flex:1;
+    min-width:220px;
+}
+.footer-box h3{
+    font-size:20px;
+    margin-bottom:10px;
+}
+.footer-box p,a{
+    color:#ddd;
+    text-decoration:none;
+    margin-bottom:6px;
+    display:block;
+}
+.footer-box a:hover{
+    color:#ffe082;
+}
+.footer-icons span{
+    font-size:28px;
+    margin-right:12px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+.footer-icons span:hover{
+    transform:scale(1.2);
+}
+.footer-bottom{
+    text-align:center;
+    margin-top:20px;
+    font-size:15px;
+    color:#ccc;
+    border-top:1px solid #333;
+    padding-top:10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="#" class="logo">Travellers</a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#food">Food</a></li>
+        <li><a href="#review">Reviews</a></li>
+    </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero-section">
+    <img src="https://www.barcelo.com/guia-turismo/wp-content/uploads/2023/11/maldivas-playas-1.jpg" alt="Maldives Beach">
+</section>
+
+<!-- About Maldives -->
+<section id="about" class="about-section">
+    <img src="https://media.istockphoto.com/id/1151755587/photo/sunrise-behind-a-tropical-island-in-the-maldives.jpg?s=612x612&w=0&k=20&c=1P-LXAZfbvIA58uLLRU8zTiwBSnR01zDzZAChe_wM7c=" alt="Maldives">
+    <div class="about-text">
+        <h2>About Maldives</h2>
+        <p>
+            The Maldives is a tropical paradise with crystal-clear waters, white sandy beaches, and luxurious overwater bungalows. Ideal for honeymooners, adventure seekers, and nature lovers, the Maldives offers snorkeling, diving, island hopping, and serene sunsets that are truly unforgettable.
+        </p>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="gallery-section">
+    <h2>Gallery</h2>
+    <div class="gallery-container">
+        <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLpY92dSngpwAi0QaYSUZiygTQNxdJ9m0YaQ&s" alt=""><p class="img-name">Overwater Bungalows</p></div>
+        <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkZQDXmXkVAWmfVODn_x1ffQ92qEzs6flECQ&s" alt=""><p class="img-name">Crystal Waters</p></div>
+        <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7MUFPGMsIKCjMKAKBl76rqdiNrUlyuuyNAQ&s" alt=""><p class="img-name">Scuba Diving</p></div>
+        <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDHnW1OY4SY_wlqEbzwPblYxQZFMRTB_GW8A&s" alt=""><p class="img-name">Sunset Views</p></div>
+        <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGEQC7RZgqrwwRbBqwio0ohNWAfMQTnqQIQ&s" alt=""><p class="img-name">Private Islands</p></div>
+        <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN51VO9bC_EXpdTc8_qpOaZzYYaXvq23wj8A&s" alt=""><p class="img-name">Beach Walks</p></div>
+    </div>
+</section>
+
+<!-- Food -->
+<section id="food" class="food-section">
+    <h2>Famous Food of Maldives</h2>
+    <div class="food-row">
+        <div class="food-image-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFWBc8bsezk3ve8RChPzUKddqc-g3qb-MO-w&s" alt=""><p class="food-name">Maldivian Fish Curry</p></div>
+        <div class="food-text">A traditional Maldivian curry made with fresh tuna, coconut milk, and local spices. Served with rice or flatbread.</div>
+    </div>
+
+    <div class="food-row">
+        <div class="food-image-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPuefGI78_FpwOROEVDCRxyd_gYVKXup1nzA&s" alt=""><p class="food-name">Mas Huni</p></div>
+        <div class="food-text">A traditional Maldivian breakfast made with tuna, coconut, onion, and chili, typically eaten with flatbread called roshi.</div>
+    </div>
+
+    <div class="food-row">
+        <div class="food-image-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStg5Hl5gyxoaiYSH1v2txsrFS4v_S47nuTag&s" alt=""><p class="food-name">Boshi Mashuni</p></div>
+        <div class="food-text">A local dish made with banana flower, coconut, and spices. Savory and rich in flavor.</div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="review" class="testimonial-section">
+    <h2>What Visitors Say</h2>
+    <div class="testimonial-container">
+        <div class="testimonial-card">
+            <h3 class="t-name">Sarah Jones</h3>
+            <p class="t-role">Traveler from UK</p>
+            <p class="t-text">“The Maldives is pure paradise. Crystal clear water and private bungalows made our honeymoon unforgettable!”</p>
+        </div>
+        <div class="testimonial-card">
+            <h3 class="t-name">Liam Smith</h3>
+            <p class="t-role">Traveler from Australia</p>
+            <p class="t-text">“Snorkeling among coral reefs and relaxing on pristine beaches was a dream come true.”</p>
+        </div>
+        <div class="testimonial-card">
+            <h3 class="t-name">Hina Patel</h3>
+            <p class="t-role">Traveler from India</p>
+            <p class="t-text">“Maldives offers the perfect mix of adventure and relaxation. The sunsets are magical!”</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-box"><h3>Travellers</h3><p>Your trusted partner for unforgettable journeys worldwide.</p></div>
+        <div class="footer-box"><h3>Quick Links</h3><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#food">Food</a><a href="#review">Reviews</a></div>
+        <div class="footer-box"><h3>Contact Us</h3><p>Email: support@travellers.com</p><p>Phone: +91 98765 43210</p><p>Location: Maldives</p></div>
+        <div class="footer-box"><h3>Follow Us</h3><div class="footer-icons"><span>🌐</span><span>📘</span><span>📸</span><span>🐦</span></div></div>
+    </div>
+    <div class="footer-bottom">© 2025 Travellers. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>

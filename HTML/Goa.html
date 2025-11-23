@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goa Adventure</title>
+<style>
+/* ---------- General Styles ---------- */
+body{
+    margin:0;
+    font-family:"Poppins",sans-serif;
+    background:#f0f4f8;
+}
+img{width:100%; display:block; border-radius:10px;}
+input, select, textarea, button{
+    font-family:"Poppins",sans-serif;
+}
+
+/* ---------- Navbar ---------- */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    background: linear-gradient(90deg,#ff5722,#ff7043);
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.navbar .logo{
+    font-size:24px;
+    font-weight:bold;
+    text-decoration:none;
+    color:white;
+}
+.navbar .nav-links{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+.navbar .nav-links li a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+}
+.navbar .nav-links li a:hover{
+    color:#ffe082;
+}
+
+/* ---------- Hero Section ---------- */
+.hero-section{
+    position:relative;
+    overflow:hidden;
+    height:70vh;
+}
+.hero-section img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    /* Animated Zoom Effect */
+    animation: zoomIn 20s infinite alternate;
+}
+@keyframes zoomIn{
+    0%{transform:scale(1);}
+    100%{transform:scale(1.1);}
+}
+
+/* ---------- About Section ---------- */
+.about-section{
+    padding:60px 20px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:30px;
+}
+.about-section img{
+    flex:1;
+    max-width:500px;
+    /* Animated Fade In Effect */
+    animation: fadeIn 2s ease forwards;
+}
+.about-text{
+    flex:1;
+}
+.about-text h2{
+    font-size:2.5rem;
+    color:#d84315;
+}
+.about-text p{
+    font-size:1.1rem;
+    color:#555;
+    line-height:1.6;
+}
+@keyframes fadeIn{
+    0%{opacity:0;transform:translateY(20px);}
+    100%{opacity:1;transform:translateY(0);}
+}
+
+/* ---------- Gallery Section ---------- */
+.gallery-section{
+    padding:50px 20px;
+    background:#ffe0b2;
+}
+.gallery-section h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:#d84315;
+}
+.gallery-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:15px;
+    background:#ccc;
+    /* Animated Fade In Up Effect */
+    animation:fadeInUp 1s ease forwards;
+}
+.gallery-item img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    /* Hover Animation */
+    transition:transform 0.5s ease;
+}
+.gallery-item:hover img{
+    transform:scale(1.1);
+}
+.img-name{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    background:rgba(0,0,0,0.5);
+    color:white;
+    font-weight:600;
+    padding:10px 0;
+    font-size:1.1rem;
+}
+@keyframes fadeInUp{
+    0%{opacity:0; transform:translateY(20px);}
+    100%{opacity:1; transform:translateY(0);}
+}
+
+/* ---------- Food Section ---------- */
+.food-section{
+    padding:60px 20px;
+}
+.food-section h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:#d84315;
+}
+.food-row{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:30px;
+    margin-bottom:40px;
+}
+.food-image-box{
+    flex:1;
+    max-width:400px;
+}
+.food-image-box img{
+    height:250px;
+    object-fit:cover;
+    border-radius:10px;
+}
+.food-name{
+    font-weight:700;
+    color:#bf360c;
+    text-align:center;
+    margin-top:8px;
+}
+
+
+
+/* ---------- Testimonials (Includes Card Animation) ---------- */
+.testimonial-section{
+    padding:60px 20px;
+    background:#ffe0b2;
+}
+.testimonial-section h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:40px;
+    color:#d84315;
+}
+.testimonial-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+.testimonial-card{
+    background:#ffffff;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.1);
+    /* Testimonial Card Hover Animation */
+    transition:transform 0.3s;
+}
+.testimonial-card:hover{
+    transform:translateY(-5px);
+}
+.t-name{
+    font-weight:700;
+    color:#bf360c;
+}
+.t-role{
+    font-size:0.9rem;
+    color:#555;
+}
+.t-text{
+    margin-top:10px;
+    font-size:1rem;
+    color:#555;
+}
+
+/* ---------- Footer (Includes Icon Animation) ---------- */
+footer{
+    background:#bf360c;
+    color:white;
+    padding:50px 20px;
+}
+.footer-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:20px;
+}
+.footer-box{
+    flex:1;
+    min-width:220px;
+}
+.footer-box h3{
+    font-size:20px;
+    margin-bottom:10px;
+}
+.footer-box p,a{
+    color:#ddd;
+    text-decoration:none;
+    margin-bottom:6px;
+    display:block;
+}
+.footer-box a:hover{
+    color:#ffe082;
+}
+.footer-icons span{
+    font-size:28px;
+    margin-right:12px;
+    cursor:pointer;
+    /* Social Icon Hover Animation */
+    transition:0.3s ease;
+}
+.footer-icons span:hover{
+    transform:scale(1.2);
+}
+.footer-bottom{
+    text-align:center;
+    margin-top:20px;
+    font-size:15px;
+    color:#ccc;
+    border-top:1px solid #333;
+    padding-top:10px;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="#" class="logo">Travellers</a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#food">Food</a></li>
+        
+        <li><a href="#review">Reviews</a></li>
+    </ul>
+</nav>
+
+<section class="hero-section">
+    <img src="https://cdn.audleytravel.com/2803/1999/79/15984870-goa-beach-goa.jpg" alt="Goa Beach">
+</section>
+
+<section id="about" class="about-section">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoDUeF0iUkB5r5Vs_GQqaVMFz60UAKBuV4OA&s" alt="Goa">
+    <div class="about-text">
+        <h2>About Goa</h2>
+        <p>
+            Goa, the party capital of India, is famous for its **stunning beaches**, **vibrant nightlife**, **Portuguese architecture**, and **seafood cuisine**. Ideal for beach lovers, adventure seekers, and culture enthusiasts, Goa offers everything from serene sunsets to exciting water sports.
+        </p>
+    </div>
+</section>
+
+<section id="gallery" class="gallery-section">
+    <h2>Gallery</h2>
+    <div class="gallery-container">
+        <div class="gallery-item"><img src="https://st1.photogallery.ind.sh/wp-content/uploads/indiacom/anjuna-beach-202503-1742618207.jpg?impolicy=Medium_Widthonly&w=350&h=263" alt="Palolem Beach"><p class="img-name">Beaches</p></div>
+        <div class="gallery-item"><img src="https://www.easemytrip.com/travel/img/nightlife-places-goa.jpg" alt="Nightlife"><p class="img-name">Nightlife</p></div>
+        <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSMiwKKCWlITmtBzDkZtXt1FvzebzSmSh57w&s" alt="Sunsets"><p class="img-name">Sunsets</p></div>
+        <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG1sLXQhTZEP1jE_SbgsAfJk6szKSIvMk-cQ&s" alt="Water Sports"><p class="img-name">Water Sports</p></div>
+        <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN2Fn48izpLSx_Mlc83dy2srOnrpUks224KA&s" alt="Forts"><p class="img-name">Forts</p></div>
+        <div class="gallery-item"><img src="https://media.easemytrip.com/media/Blog/India/637190086646380922/637190086646380922ELJSOV.jpg" alt="Local Markets"><p class="img-name">Local Markets</p></div>
+    </div>
+</section>
+
+<section id="food" class="food-section">
+    <h2>Famous Food of Goa</h2>
+    <div class="food-row">
+        <div class="food-image-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd8qjmcDTCFeIfDp77r-w5YomR3TzdulUebA&s" alt="Xacuti Curry"><p class="food-name">Xacuti Curry</p></div>
+        <div class="food-text">A traditional Goan curry made with spices, coconut, and meat or seafood, often served with rice or **sanna (Goan steamed rice cakes)**.</div>
+    </div>
+
+    <div class="food-row">
+        <div class="food-image-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Gete9Ma_9kZY2ju3epZr0PGCG78PCr3T4A&s" alt="Goan Prawn Curry"><p class="food-name">Goan Prawn Curry</p></div>
+        <div class="food-text">A flavorful prawn curry cooked in **coconut milk** and spices, a must-try dish for seafood lovers, giving a distinctly tropical taste.</div>
+    </div>
+
+    <div class="food-row">
+        <div class="food-image-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4aUEuwahuvH2peDVYZP7Vu3s4BeZ6NWrzOw&s" alt="Feni"><p class="food-name">Feni</p></div>
+        <div class="food-text">A local alcoholic drink made from **cashew** or **coconut**, unique to Goa, classified as a "country liquor."</div>
+    </div>
+</section>
+
+
+
+<section id="review" class="testimonial-section">
+    <h2>What Visitors Say</h2>
+    <div class="testimonial-container">
+        <div class="testimonial-card">
+            <h3 class="t-name">Arjun Mehta</h3>
+            <p class="t-role">Traveler from Mumbai, India</p>
+            <p class="t-text">“Goa’s beaches and nightlife are unmatched. A perfect place for fun and relaxation! The local cuisine was a highlight.”</p>
+        </div>
+        <div class="testimonial-card">
+            <h3 class="t-name">Olivia Brown</h3>
+            <p class="t-role">Traveler from London, UK</p>
+            <p class="t-text">“Sunsets and water sports in Goa made my vacation absolutely amazing! The Portuguese-style architecture was charming.”</p>
+        </div>
+        <div class="testimonial-card">
+            <h3 class="t-name">Rahul Sharma</h3>
+            <p class="t-role">Traveler from Delhi, India</p>
+            <p class="t-text">“The food, beaches, and local culture in Goa are unforgettable. Highly recommend visiting! The booking process was seamless.”</p>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-box"><h3>Travellers</h3><p>Your trusted partner for unforgettable journeys worldwide.</p></div>
+        <div class="footer-box"><h3>Quick Links</h3><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#food">Food</a><a href="#booking">Book Now</a><a href="#review">Reviews</a></div>
+        <div class="footer-box"><h3>Contact Us</h3><p>Email: support@travellers.com</p><p>Phone: +91 98765 43210</p><p>Location: Goa, India</p></div>
+        <div class="footer-box"><h3>Follow Us</h3><div class="footer-icons"><span>🌐</span><span>📘</span><span>📸</span><span>🐦</span></div></div>
+    </div>
+    <div class="footer-bottom">© 2025 Travellers. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
