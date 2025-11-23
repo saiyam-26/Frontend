@@ -113,7 +113,47 @@
                     <div class="icon">🚗</div>
                     <h3>Car Rentals</h3>
                     <p>Convenient car rentals to make your travel smooth.</p>
+                    <a href="car.html" class="animated-btn">Book Now</a>
                 </div>
+                <style>
+.animated-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #22d3ee, #7b5fff);
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.animated-btn:hover {
+    transform: scale(1.05);
+}
+
+.animated-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+    transform: skewX(-25deg);
+    transition: 0.5s;
+}
+
+.animated-btn:hover::before {
+    left: 125%;
+}
+
+.animated-btn:active {
+    transform: scale(0.95);
+}
+</style>
                 <div class="card">
                     <div class="icon">🗺️</div>
                     <h3>Travel Insurance</h3>

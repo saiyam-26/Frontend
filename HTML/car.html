@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Rental Booking</title>
+
+<style>
+    *{
+        margin: 0; padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    /* 🔥 Animated Gradient Background */
+    body{
+        background: linear-gradient(120deg, #6a11cb, #2575fc);
+        background-size: 400% 400%;
+        animation: gradientBG 12s ease infinite;
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    header{
+        background: rgba(0,0,0,0.6);
+        padding: 25px;
+        text-align: center;
+        color: white;
+        font-size: 32px;
+        backdrop-filter: blur(5px);
+    }
+
+    .container{
+        width: 90%;
+        margin: 40px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+        gap: 25px;
+    }
+
+    .car-box{
+        background: rgba(255,255,255,0.2);
+        padding: 15px;
+        border-radius: 15px;
+        backdrop-filter: blur(6px);
+        color: white;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        transition: 0.3s;
+    }
+    .car-box:hover{
+        transform: scale(1.05);
+    }
+    .car-box img{
+        width: 100%;
+        height: 180px;
+        border-radius: 12px;
+        object-fit: cover;
+    }
+    .price{
+        font-size: 18px;
+        color: #ffe600;
+        font-weight: bold;
+    }
+    .btn{
+        background: #000;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        display: inline-block;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+    .btn:hover{
+        background: #333;
+    }
+
+    /* POPUP */
+    #booking-popup{
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.7);
+        justify-content: center;
+        align-items: center;
+    }
+    .popup-box{
+        background: white;
+        padding: 25px;
+        width: 380px;
+        border-radius: 10px;
+    }
+    input{
+        width: 100%;
+        padding: 10px;
+        margin: 7px 0;
+        border-radius: 7px;
+        border: 1px solid #aaa;
+    }
+    .submit-btn{
+        width: 100%;
+        padding: 12px;
+        background: #2575fc;
+        color: white;
+        border: none;
+        font-size: 18px;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+    .close{
+        float: right;
+        cursor: pointer;
+        font-size: 22px;
+    }
+
+    /* CONFIRM MESSAGE */
+    #confirmBox{
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #00c853;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.4);
+        font-size: 18px;
+        animation: fadeInOut 4s forwards;
+    }
+
+    @keyframes fadeInOut {
+        0% {opacity: 0;}
+        10% {opacity: 1;}
+        90% {opacity: 1;}
+        100% {opacity: 0;}
+    }
+
+    /* FOOTER */
+    footer{
+        margin-top: 50px;
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 25px;
+        text-align: center;
+        font-size: 16px;
+    }
+</style>
+
+</head>
+<body>
+
+<header>Luxury Car Rental Booking</header>
+
+<div class="container">
+
+    <!-- 12 CARS -->
+
+    <div class="car-box">
+        <img src="https://www.siddeshwaratravels.in/car_images/3.jpg">
+        <h2>Honda City</h2>
+        <p class="price">₹1800/day</p>
+        <div class="btn" onclick="openBooking('Honda City','₹1800/day')">Book Now</div>
+    </div>
+
+    <div class="car-box">
+        <img src="https://i.cdn.newsbytesapp.com/images/l207_21781623907005.jpg">
+        <h2>Hyundai Creta</h2>
+        <p class="price">₹2500/day</p>
+        <div class="btn" onclick="openBooking('Hyundai Creta','₹2500/day')">Book Now</div>
+    </div>
+
+    <div class="car-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/2015_Toyota_Fortuner_%28New_Zealand%29.jpg/1200px-2015_Toyota_Fortuner_%28New_Zealand%29.jpg">
+        <h2>Toyota Fortuner</h2>
+        <p class="price">₹4500/day</p>
+        <div class="btn" onclick="openBooking('Toyota Fortuner','₹4500/day')">Book Now</div>
+    </div>
+
+    <div class="car-box">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG2-jU5Wd_oYjK8Qnk5DMLAmGH0feyX1u6mQ&s">
+        <h2>Maruti Swift</h2>
+        <p class="price">₹1200/day</p>
+        <div class="btn" onclick="openBooking('Maruti Swift','₹1200/day')">Book Now</div>
+    </div>
+
+    <div class="car-box">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPKI7pKzHo5PZpi4x5msTtNtkc_ShIK7iFuA&s">
+        <h2>Mahindra Thar</h2>
+        <p class="price">₹3200/day</p>
+        <div class="btn" onclick="openBooking('Mahindra Thar','₹3200/day')">Book Now</div>
+    </div>
+
+    <div class="car-box">
+        <img src="https://cdni.autocarindia.com/ExtraImages/20220228061914_Maruti_Baleno_2022_front.jpg">
+        <h2>Baleno</h2>
+        <p class="price">₹1500/day</p>
+        <div class="btn" onclick="openBooking('Baleno','₹1500/day')">Book Now</div>
+    </div>
+
+    <div class="car-box">
+        <img src="https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg">
+        <h2>MG Hector</h2>
+        <p class="price">₹2800/day</p>
+        <div class="btn" onclick="openBooking('MG Hector','₹2800/day')">Book Now</div>
+    </div>
+
+    <div class="car-box">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr-zEWbx4p1EwMwYMETMs7HCaWftGEv052kQ&s">
+        <h2>Tata Nexon</h2>
+        <p class="price">₹2000/day</p>
+        <div class="btn" onclick="openBooking('Tata Nexon','₹2000/day')">Book Now</div>
+    </div>
+
+    <div class="car-box">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROYidsEes1jNBsCtyohk09IWZ0-_Vu_x041A&s">
+        <h2>Kia Seltos</h2>
+        <p class="price">₹2700/day</p>
+        <div class="btn" onclick="openBooking('Kia Seltos','₹2700/day')">Book Now</div>
+    </div>
+
+    <div class="car-box">
+        <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg">
+        <h2>BMW X1</h2>
+        <p class="price">₹7000/day</p>
+        <div class="btn" onclick="openBooking('BMW X1','₹7000/day')">Book Now</div>
+    </div>
+
+    <div class="car-box">
+        <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg">
+        <h2>Audi Q7</h2>
+        <p class="price">₹9500/day</p>
+        <div class="btn" onclick="openBooking('Audi Q7','₹9500/day')">Book Now</div>
+    </div>
+
+    <div class="car-box">
+        <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/107719/range-rover-exterior-left-rear-three-quarter.jpeg?isig=0&q=80">
+        <h2>Range Rover</h2>
+        <p class="price">₹12000/day</p>
+        <div class="btn" onclick="openBooking('Range Rover','₹12000/day')">Book Now</div>
+    </div>
+
+</div>
+
+<!-- BOOKING POPUP -->
+<div id="booking-popup">
+    <div class="popup-box">
+        <span class="close" onclick="closePopup()">×</span>
+        <h2>Book Car</h2>
+
+        <label>Car Selected</label>
+        <input type="text" id="carName" readonly>
+
+        <label>Price</label>
+        <input type="text" id="carPrice" readonly>
+
+        <label>Your Name</label>
+        <input type="text" id="uName">
+
+        <label>Mobile</label>
+        <input type="text" id="uMobile">
+
+        <label>Pickup Date</label>
+        <input type="date" id="pickup">
+
+        <label>Return Date</label>
+        <input type="date" id="returnDate">
+
+        <button class="submit-btn" onclick="confirmBooking()">Confirm Booking</button>
+    </div>
+</div>
+
+<!-- CONFIRM MESSAGE -->
+<div id="confirmBox">✔ Booking Confirmed Successfully!</div>
+
+<!-- FOOTER -->
+<footer>
+     © 2025 Travellers. All Rights Reserved.
+</footer>
+
+<script>
+    function openBooking(name, price){
+        document.getElementById("booking-popup").style.display = "flex";
+        document.getElementById("carName").value = name;
+        document.getElementById("carPrice").value = price;
+    }
+
+    function closePopup(){
+        document.getElementById("booking-popup").style.display = "none";
+    }
+
+    function confirmBooking(){
+        closePopup();
+        let box = document.getElementById("confirmBox");
+        box.style.display = "block";
+
+        setTimeout(()=>{
+            box.style.display = "none";
+        }, 3500);
+    }
+</script>
+
+</body>
+</html>
